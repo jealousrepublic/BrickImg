@@ -1,9 +1,9 @@
-<h1>Sign Up</h1>
+<h2>Sign Up</h2>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, :html => { :class => "nice" } do |f| %>
   <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
+	<h3>Invalid Form</h3>
+    <div class="alert-box error">
       <ul>
         <% for message in @user.errors.full_messages %>
           <li><%= message %></li>
@@ -12,16 +12,16 @@
     </div>
   <% end %>
   <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <%= f.label :email %>
+    <%= f.text_field :email, :class => "input-text" %>
   </p>
   <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
+    <%= f.label :password %>
+    <%= f.password_field :password, :class => "input-text" %>
   </p>
   <p>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :class => "input-text" %>
   </p>
-  <p class="button"><%= f.submit %></p>
+  <p><%= submit_tag "Sign Up", :class => "nice small radius blue button" %></p>
 <% end %>

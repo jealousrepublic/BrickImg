@@ -33,3 +33,5 @@ gem "bcrypt-ruby", :require => "bcrypt"
 
 gem "rake", "0.8.7"
 
+gem "zurb-foundation"
+

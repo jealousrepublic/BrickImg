@@ -1,27 +1,96 @@
 <!DOCTYPE html>
-<html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-  <title>BrickImg</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+	<meta charset="utf-8" />
+	
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+	
+	<title>Welcome to BrickImg</title>
+	<%= stylesheet_link_tag  "application" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" href="stylesheets/ie.css">
+	<![endif]-->
+
+	
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->	
 </head>
 <body>
-<div id="user_nav">
-  <% if current_user %>
-    Logged in as <%= current_user.email %>.
-    <%= link_to "Log out", log_out_path %>
-  <% else %>
-    <%= link_to "Sign up", sign_up_path %> or
-    <%= link_to "log in", log_in_path %>
-  <% end %>
+<div class="container">
+	<div class="row">
+		<div class="eight columns">
+			<h1><%= link_to "BrickImg", root_url %></h1>
+		</div>
+		<div class="four columns">
+		  <% if current_user %>
+		    Logged in as <%= current_user.email %>.
+		    <%= link_to "Log out", log_out_path, :class => 'nice radius small blue button' %>
+		  <% else %>
+		    <%= link_to "Sign up", sign_up_path, :class => 'nice radius small blue button' %> or
+		    <%= link_to "log in", log_in_path, :class => 'nice radius small blue button' %>
+		  <% end %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="twelve columns">
+			<% flash.each do |name, msg| %>
+			  <%= content_tag :div, msg, :class => "alert-box #{name}" %>
+			<% end %>		
+		</div>
+	</div>
+	<div class="row">
+		<div class="eight columns">
+			<%= yield %>
+		</div>
+		<div class="four columns">
+			<div class="row">
+				<h3>Latest Images</h3>
+				<ul class="block-grid three-up">
+					<li>Stuff</li>
+					<li>Stuff</li>
+					<li>Stuff</li>
+					<li>Stuff</li>
+					<li>Stuff</li>
+					<li>Stuff</li>
+					<li>Stuff</li>
+					<li>Stuff</li>
+					<li>Stuff</li>
+				</ul>
+			</div>
+			<div class="row">
+				<h3>Your Profile</h3>
+				<ul class="block-grid three-up">
+					<li>Stuff</li>
+					<li>Stuff</li>
+					<li>Stuff</li>
+					<li>Stuff</li>
+					<li>Stuff</li>
+					<li>Stuff</li>
+					<li>Stuff</li>
+					<li>Stuff</li>
+					<li>Stuff</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="eight columns">
+			<p>&copy; 2011 BrickImg</p>
+		</div>
+		<div class="four columns">
+			<a href="#">About</a> | <a href="#">Privacy Policy</a> | <a href="#">Report Abuse</a>
+		</div>
+	</div>
 </div>
-
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-<% end %>
-	
-<%= yield %>
-
 </body>
 </html>
