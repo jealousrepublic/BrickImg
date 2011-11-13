@@ -17,6 +17,13 @@ class User < ActiveRecord::Base
     end
   end
   
+  def self.generate_password(length=10)
+    chars = 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ23456789^%&*(/-||!@#$'
+    password = ''
+    length.times { |i| password << chars[rand(chars.length)] }
+    password
+  end
+  
   def encrypt_password
     if password.present?
       self.password_salt = BCrypt::Engine.generate_salt
