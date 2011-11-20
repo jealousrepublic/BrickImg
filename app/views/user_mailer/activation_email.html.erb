@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Welcome to BrickImg</h1>
+    <p>Thanks for signing up. In order to activate your account please click the link below</p>
+	<p><strong><%= url_for(:host => "localhost:3000", :controller => "users", :action => "activate", :key => @activationKey) %></strong></p>
+	<p>We take your online security very seriously so we ask that you are very careful with sharing your email address on BrickImg.com. We promise to never show your email anywhere on BrickImg.com.</p>
+  </body>
+</html>

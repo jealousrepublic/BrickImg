@@ -35,3 +35,5 @@ gem "rake", "0.8.7"
 
 gem "zurb-foundation"
 
+gem "paperclip"
+
